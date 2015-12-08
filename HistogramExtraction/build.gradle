@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+def home = '/home/gathors/proj/v-opencv/HistogramExtraction'
+
+jar {
+    manifest {
+        attributes("Main-Class": "org.cloudcomputing.preprocessing.HistogramExtraction")
+        attributes("Class-Path": home+"/libs/opencv-2412.jar")
+    }
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.4'
+    compile fileTree(dir: home+'/libs', include: ['*.jar'])
+    runtime fileTree(dir: home+'/libs', include: ['*.jar'])
+    runtime fileTree(dir: home+'/libs', include: ['*.so'])
+    testCompile 'junit:junit:4.12'
+}
+
